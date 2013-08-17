@@ -9,7 +9,7 @@
   make sure that you disable logging  from the DCF library. You can 
   do this by commenting out   #define VERBOSE_DEBUG 1   in Utils.cpp. 
  */
-
+int led = 7;
 #include <DCF77.h>       //https://github.com/thijse/Arduino-Libraries/downloads
 #include <Time.h>        //http://www.arduino.cc/playground/Code/Time
 #include <Timezone.h>    //https://github.com/JChristensen/Timezone
@@ -41,6 +41,9 @@ DCF77 DCF = DCF77(DCF_PIN,DCF_INTERRUPT);
 
 
 void setup() {
+
+  pinMode(led, OUTPUT); //led wir auf Ausgang gesetzt
+  
   Serial.begin(9600); 
   DCF.Start();
   setSyncInterval(30);
@@ -64,6 +67,22 @@ Serial.println("Es dauert mindestens 2 Minuten bis eine Uhrzeit angezeigt wird."
 
 void loop()
 {  
+  
+  // Hier wird die Weckzeit gesetzt. wichtig ist der minute Wert für die Impulslänge 
+  
+    if(hour() == 15 && minute() == 1) 
+  {
+   digitalWrite(led, HIGH);   // Auusgang ein (HIGH is the voltage level)
+  }
+else
+  {
+  digitalWrite(led, LOW);    // Ausgang aus 
+  }
+  
+  
+  
+  
+  
   if( now() != prevDisplay) //update the display only if the time has changed
   {
     prevDisplay = now();
