@@ -1,4 +1,4 @@
-name: Build examples
+name: Build Arduino examples
 on: push
 jobs:
   build:
