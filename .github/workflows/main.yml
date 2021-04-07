@@ -12,6 +12,6 @@
     # Directory containing Arduino libraries.
 Use this directory to install required 3rd-party libraries.
 
-    libraries: # optional, default is libraries
+    libraries: libraries
     # Directory containing Arduino platforms
     hardware: # optional, default is hardware
